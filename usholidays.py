@@ -1,6 +1,8 @@
 import calendar
 from datetime import date, timedelta
 
+import collections
+
 
 class YearMonth:
     def __init__(self, year: int, month: int):
@@ -92,15 +94,15 @@ def thanksgiving(year: int) -> date:
 
 
 def for_year(year: int):
-    return {
-        "New Year's Day": date(year, 1, 1),
-        "Martin Luther King Jr. Day": mlk_day(year),
-        "Presidents' Day": presidents_day(year),
-        "Memorial Day": memorial_day(year),
-        "Independence Day": date(year, 7, 4),
-        "Labor Day": labor_day(year),
-        "Columbus Day": columbus_day(year),
-        "Veterans Day": date(year, 11, 11),
-        "Thanksgiving": thanksgiving(year),
-        "Christmas": date(year, 12, 25)
-    }
+    return collections.OrderedDict([
+        ("New Year's Day", date(year, 1, 1)),
+        ("Martin Luther King Jr. Day", mlk_day(year)),
+        ("Presidents' Day", presidents_day(year)),
+        ("Memorial Day", memorial_day(year)),
+        ("Independence Day", date(year, 7, 4)),
+        ("Labor Day", labor_day(year)),
+        ("Columbus Day", columbus_day(year)),
+        ("Veterans Day", date(year, 11, 11)),
+        ("Thanksgiving", thanksgiving(year)),
+        ("Christmas", date(year, 12, 25))
+    ])
