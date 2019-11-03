@@ -21,9 +21,7 @@ class YearMonth:
         if self.which == -1:
             # Count backwards from the end
             day = date(
-                self.year,
-                self.month,
-                calendar.monthrange(self.year, self.month)[1]
+                self.year, self.month, calendar.monthrange(self.year, self.month)[1]
             )
             delta = -1
             self.which = 1
@@ -94,15 +92,17 @@ def thanksgiving(year: int) -> date:
 
 
 def for_year(year: int):
-    return collections.OrderedDict([
-        ("New Year's Day", date(year, 1, 1)),
-        ("Martin Luther King Jr. Day", mlk_day(year)),
-        ("Presidents' Day", presidents_day(year)),
-        ("Memorial Day", memorial_day(year)),
-        ("Independence Day", date(year, 7, 4)),
-        ("Labor Day", labor_day(year)),
-        ("Columbus Day", columbus_day(year)),
-        ("Veterans Day", date(year, 11, 11)),
-        ("Thanksgiving", thanksgiving(year)),
-        ("Christmas", date(year, 12, 25))
-    ])
+    return collections.OrderedDict(
+        [
+            ("New Year's Day", date(year, 1, 1)),
+            ("Martin Luther King Jr. Day", mlk_day(year)),
+            ("Presidents' Day", presidents_day(year)),
+            ("Memorial Day", memorial_day(year)),
+            ("Independence Day", date(year, 7, 4)),
+            ("Labor Day", labor_day(year)),
+            ("Columbus Day", columbus_day(year)),
+            ("Veterans Day", date(year, 11, 11)),
+            ("Thanksgiving", thanksgiving(year)),
+            ("Christmas", date(year, 12, 25)),
+        ]
+    )

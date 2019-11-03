@@ -19,7 +19,7 @@ class ForYearTests(TestCase):
             "Columbus Day": date(year, 10, 14),
             "Veterans Day": date(year, 11, 11),
             "Thanksgiving": date(year, 11, 28),
-            "Christmas": date(year, 12, 25)
+            "Christmas": date(year, 12, 25),
         }
 
         for k in answers.keys():

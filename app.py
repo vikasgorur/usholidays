@@ -21,10 +21,7 @@ app.json_encoder = DateJSONEncoder
 
 def holidays_as_list(year: int) -> List[Dict]:
     holidays = usholidays.for_year(year)
-    return [
-        {"name": k, "date": v}
-        for k, v in holidays.items()
-    ]
+    return [{"name": k, "date": v} for k, v in holidays.items()]
 
 
 @app.route("/<year>")
@@ -37,6 +34,6 @@ def holidays_json(year: str):
     return jsonify(holidays_as_list(int(year)))
 
 
-@app.route('/')
+@app.route("/")
 def root():
     return holidays_json(str(datetime.now().year))
