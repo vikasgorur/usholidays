@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="List of US Federal Holidays">
+    <meta name="author" content="Vikas Gorur">
+    <title>US Federal Holidays</title>
+
+    <style type="text/css">
+        body {
+            font-size: 16px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+        }
+        .year {
+            display: inline-block;
+            font-size: 480%;
+        }
+        .holidays {
+            padding-top: 64px;
+            display: table;
+            margin-left: 25%;
+            margin-right: 10%;
+        }
+        .holiday {
+            display: table-row;
+        }
+        .name-container {
+            display: table-cell;
+            text-align: right;
+        }
+        .holiday-name {
+            font-size: 160%;
+        }
+        .date-container {
+            display: table-cell;
+            padding-left: 10%;
+            text-align: left;
+            width: 50%;
+        }
+        .holiday-date {
+            font-size: 160%;
+        }
+        footer {
+            padding-top: 86px;
+            text-align: center;
+        }
+    </style>
+
+  </head>
+  <body>
+    <header>
+        <div class="year">{{ year }}</div>
+    </header>
+
+    <section class="holidays">
+        {% for holiday in holidays %}
+        <div class="holiday">
+            <span class="name-container">
+                <span class="holiday-name">{{ holiday["name"] }}</span>
+            </span>
+            <span class="date-container">
+                <span class="holiday-date">{{ holiday["date"] }}</span>
+            </span>
+        </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+      <p>Made by vikasgorur</p>
+    </footer>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 from datetime import datetime, date
 from typing import List, Dict
 
-from flask import Flask
+from flask import Flask, render_template
 from flask.json import JSONEncoder, jsonify
 
 import usholidays
@@ -24,9 +24,20 @@ def holidays_as_list(year: int) -> List[Dict]:
     return [{"name": k, "date": v} for k, v in holidays.items()]
 
 
+def humanize_date(d: date) -> str:
+    return d.strftime("%B %d")
+
+
 @app.route("/<year>")
 def holidays(year: str):
-    pass
+    return render_template(
+        "holidays.html",
+        year=year,
+        holidays=[
+            {"name": h["name"], "date": humanize_date(h["date"])}
+            for h in holidays_as_list(int(year))
+        ],
+    )
 
 
 @app.route("/<year>.json")
@@ -36,4 +47,4 @@ def holidays_json(year: str):
 
 @app.route("/")
 def root():
-    return holidays_json(str(datetime.now().year))
+    return holidays(str(datetime.now().year))
